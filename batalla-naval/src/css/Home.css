@@ -1,0 +1,31 @@
+/*
+BACKGROUND #bedffb
+BOTONES: #48718d
+COMP: #fad2b2
+ */
+
+.contenedor-home{
+    display: flex;
+    flex-direction: column;
+    background: #bedffb;
+    padding: 100px;
+}
+
+.contenedor-home > button{
+    color: white;
+    background-color: #48718d;
+    margin-top: 40px
+}
+
+.contenedor-home > input{
+  font-size: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
+.contenedor-home > input::placeholder{
+    color: #bcbcbc;
+    padding: 10px;
+    text-align: center;
+
+}
