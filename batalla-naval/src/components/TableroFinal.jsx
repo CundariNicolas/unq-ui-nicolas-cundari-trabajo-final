@@ -4,15 +4,18 @@ import UserContext from "./UserContext.jsx";
 
 const TableroFinal = ({username}) => {
     const location = useLocation();
-    const {setPosicionBarcos, posicionBarcos,  celdasColoreadas, setCeldasColoreadas} = useContext(UserContext)
+    const {setPosicionBarcos,  celdasColoreadas, setCeldasColoreadas, puntaje} = useContext(UserContext)
 
     useEffect(() => {
         setPosicionBarcos(location.state.celdasOcupadas)
         setCeldasColoreadas(location.state.celdas)
     }, []);
     return (
+
         <div className="conteiner-tablero">
-            <h2>Tablero de {username}</h2>
+            <h2>Puntaje de {username}: {puntaje}</h2>
+
+
             <table
                 style={{
                     borderSpacing: 0,

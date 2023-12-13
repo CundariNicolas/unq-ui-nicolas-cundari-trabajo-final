@@ -9,6 +9,8 @@ const  UserProvider = ({children}) => {
     const [posicionBarcos, setPosicionBarcos] = useState([])
     const [celdasColoreadas, setCeldasColoreadas] = useState([])
     const [mensaje, setMensaje] = useState(false)
+    const [puntaje, setPuntaje] = useState(0)
+    const [puntajeCpu, setPuntajeCpu] = useState(0)
 
 
     const realizarTiroContraUsuario = (col, row, nuevaColor)  =>{
@@ -31,13 +33,13 @@ const  UserProvider = ({children}) => {
         const nuevaColor = celdasColoreadas
         realizarTiroContraUsuario(col, row, nuevaColor);
         setCeldasColoreadas(nuevaColor)
-        console.log(celdasColoreadas)
     }
 
     function verificarEstadoJuego() {
         if(posicionBarcos.length === 1){
             setGanaste(false)
             setTerminoPartida(true)
+            setPuntajeCpu(puntajeCpu + 1)
         }
     }
 
@@ -54,9 +56,13 @@ const  UserProvider = ({children}) => {
             celdasColoreadas,
             setCeldasColoreadas,
             mensaje,
-            setMensaje
+            setMensaje,
+            puntaje,
+            setPuntaje,
+            puntajeCpu,
+            setPuntajeCpu
         }),
-        [username, setUsername,terminoPartida, ganaste, posicionBarcos, celdasColoreadas, disparoDeCpu, mensaje])
+        [username, setUsername,terminoPartida, ganaste, posicionBarcos, celdasColoreadas, disparoDeCpu, mensaje, puntaje, setPuntaje, puntajeCpu, setPuntajeCpu])
 
 
 

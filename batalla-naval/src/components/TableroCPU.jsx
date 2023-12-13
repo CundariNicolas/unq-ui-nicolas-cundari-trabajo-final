@@ -9,7 +9,7 @@ const TableroCPU = () => {
     const [celdasOcupadas, setCeldasOcupadas] = useState([]);
     const [disparosHechos, setDisparosHechos] = useState([])
     const [tiroHechoContraUsuario, setTiroHechoContraUsuario] = useState([])
-    const {setGanaste, setTerminoPartida, disparoDeCpu, setMensaje} = useContext(UserContext)
+    const {setGanaste, setTerminoPartida, disparoDeCpu, setMensaje, puntajeCpu, setPuntaje, puntaje} = useContext(UserContext)
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -79,6 +79,7 @@ const TableroCPU = () => {
         if(celdasOcupadas.length === 1){
             setGanaste(true)
             setTerminoPartida(true)
+            setPuntaje(puntaje + 1)
         }
     }
 
@@ -89,7 +90,7 @@ const TableroCPU = () => {
         while(tiroHechoContraUsuario.some(tiro => tiro.row === tiroRow && tiro.col === tiroCol)){
             tiroRow = getRandomInt(10)
             tiroCol = getRandomInt(10)
-            if(intentos === 100){
+            if(intentos === 300){
                 break
             }
             intentos++
@@ -137,7 +138,7 @@ const TableroCPU = () => {
 
         <div className="conteiner-tablero">
 
-            <h2>Tablero CPU</h2>
+            <h2>Puntaje de CPU: {puntajeCpu}</h2>
             <table
                 style={{
                     borderSpacing: 0,
