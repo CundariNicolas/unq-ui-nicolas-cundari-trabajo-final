@@ -1,0 +1,27 @@
+.conteiner-tablero{
+    display: flex;
+    border: 2px solid #666666;
+    padding: 10px;
+}
+
+.conteiner-tablero>h2{
+    margin: 20px;
+}
+.container-barcos{
+    width: 250px;
+    height: 250px;
+}
+.mensajes-conteiner{
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+}
+
+.button-style{
+    color: white;
+    background-color: #48718d;
+}
+
+.boton-rotar{
+    margin-right: 10px;
+}

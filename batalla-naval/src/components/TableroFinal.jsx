@@ -1,11 +1,17 @@
-import React from 'react';
+import {useContext, useEffect} from 'react';
 import {useLocation} from "react-router-dom";
+import UserContext from "./UserContext.jsx";
 
 const TableroFinal = ({username}) => {
     const location = useLocation();
+    const {setPosicionBarcos, posicionBarcos,  celdasColoreadas, setCeldasColoreadas} = useContext(UserContext)
 
+    useEffect(() => {
+        setPosicionBarcos(location.state.celdasOcupadas)
+        setCeldasColoreadas(location.state.celdas)
+    }, []);
     return (
-        <div>
+        <div className="conteiner-tablero">
             <h2>Tablero de {username}</h2>
             <table
                 style={{
@@ -17,7 +23,7 @@ const TableroFinal = ({username}) => {
                 }}
             >
                 <tbody>
-                {location.state.celdas.map((fila, rowIndex) => (
+                {celdasColoreadas.map((fila, rowIndex) => (
                     <tr key={rowIndex}>
                         {fila.map((colorDeFondo, colIndex) => (
                             <td
@@ -35,15 +41,6 @@ const TableroFinal = ({username}) => {
                 ))}
                 </tbody>
             </table>
-
-            <div>
-                <h3>Celdas Ocupadas</h3>
-                <ul>
-                    {location.state.celdasOcupadas.map((celda, index) => (
-                        <li key={index}>{(`${celda.row}, ${celda.col}`)}</li>
-                    ))}
-                </ul>
-            </div>
         </div>
     );
 };
